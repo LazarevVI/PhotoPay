@@ -193,7 +193,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestCameraPermissions(){
+        Log.d("requestPermission", "Camera permissions requested")
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE)
+
     }
 
     override fun onRequestPermissionsResult(
@@ -205,10 +207,12 @@ class MainActivity : AppCompatActivity() {
         when (requestCode){
             CAMERA_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty()){
+
                     val cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
                     val storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
 
                     if (cameraAccepted && storageAccepted) {
+                        Log.d("requestPermission", "Camera permissions granted")
                         pickImageCamera()
                     }
                     else{

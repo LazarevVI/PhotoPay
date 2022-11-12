@@ -4,9 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@android:color/holo_purple"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:padding="10dp">
+    android:padding="15dp"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_baseline_crop_original_24"
+                    app:strokeWidth="5dp" />
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/extracted_phone_number_title" />
+
+                <EditText
+                    android:id="@+id/extractedPhoneNum"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,55 +60,56 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageIv"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:strokeWidth="2dp"
-                android:src="@drawable/ic_baseline_crop_original_24"
-                android:adjustViewBounds="true"/>
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
-            <TextView
-                style = "@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/extracted_phone_number_title"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/takePhotoBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/take_photo"
+                    android:textSize="16sp"
+                    app:backgroundTint="@android:color/secondary_text_light"
+                    app:icon="@drawable/ic_baseline_add_a_photo_24" />
 
-            <EditText
-                android:id="@+id/extractedPhoneNum"
-                style = "@style/TextAppearance.MaterialComponents.Headline6"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/extractPhoneNumBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:text="@string/extract_phone_number"
+                    app:backgroundTint="@android:color/secondary_text_light"
+                    app:icon="@drawable/ic_baseline_offline_share_24" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
+                android:paddingTop="10dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/transferAmount"
+                    style="@style/ThemeOverlay.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+
+                    android:text="@string/transfer_money"
+                    app:backgroundTint="?android:attr/colorFocusedHighlight"
+                    app:icon="@drawable/ic_baseline_paid_24" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/takePhotoBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:icon="@drawable/ic_baseline_add_a_photo_24"
-            android:text="@string/take_photo"
-            android:layout_marginEnd="5dp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/extractPhoneNumBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/extract_phone_number"
-            app:icon="@drawable/ic_baseline_offline_share_24"
-            android:layout_marginStart="5dp"/>
-
-    </LinearLayout>
 
 </LinearLayout>
