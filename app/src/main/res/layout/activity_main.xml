@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@android:color/holo_purple"
     android:orientation="vertical"
     android:padding="15dp"
     tools:context=".MainActivity">
@@ -86,7 +85,7 @@
                     android:textSize="16sp"
                     android:text="@string/extract_phone_number"
                     app:backgroundTint="@android:color/secondary_text_light"
-                    app:icon="@drawable/ic_baseline_offline_share_24" />
+                    app:icon ="@drawable/ic_baseline_offline_share_24" />
             </LinearLayout>
 
             <LinearLayout
@@ -95,13 +94,11 @@
                 android:paddingTop="10dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/transferAmount"
-                    style="@style/ThemeOverlay.Material3.Button.TonalButton"
+                    android:id="@+id/transferBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textSize="18sp"
-
                     android:text="@string/transfer_money"
                     app:backgroundTint="?android:attr/colorFocusedHighlight"
                     app:icon="@drawable/ic_baseline_paid_24" />

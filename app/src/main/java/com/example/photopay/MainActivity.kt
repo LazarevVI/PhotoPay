@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recognizeTextBtn: MaterialButton
     private lateinit var imageIv: ImageView
     private lateinit var recognizedTextEt: EditText
+    private lateinit var transferBtn: MaterialButton
+
 
     private companion object{
         private const val CAMERA_REQUEST_CODE = 100
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         recognizeTextBtn = findViewById(R.id.extractPhoneNumBtn)
         imageIv = findViewById(R.id.imageIv)
         recognizedTextEt = findViewById(R.id.extractedPhoneNum)
+        transferBtn = findViewById(R.id.transferBtn)
 
         cameraPermissions = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         storagePermissions = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -73,6 +76,12 @@ class MainActivity : AppCompatActivity() {
             else{
                 recognizeTextFromImage()
             }
+        }
+
+        transferBtn.setOnClickListener{
+            val intent = Intent(this@MainActivity,SendMessage::class.java)
+            intent.putExtra("PhoneNum", recognizedTextEt.text.toString())
+            startActivity(intent)
         }
 
     }
