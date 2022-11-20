@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showInputImageDialog() {
+    private fun     showInputImageDialog() {
         val popupMenu = PopupMenu(this, inputImageBtn)
 
         popupMenu.menu.add(Menu.NONE, 1, 1, "Camera")
