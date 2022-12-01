@@ -71,7 +71,7 @@ class SendMessage : AppCompatActivity() {
 
         confirmBtn.setOnClickListener{
             sMessage = etOtp!!.text.toString()
-                  sendMessage(sMessage)
+            sendMessage(sMessage)
         }
 
         transferBtn.setOnClickListener{
