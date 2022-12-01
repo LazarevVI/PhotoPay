@@ -3,4 +3,9 @@
     <string name="take_photo">Take photo</string>
     <string name="extract_phone_number">Extract phone number</string>
     <string name="extracted_phone_number_title">Extracted phone number</string>
+    <string name="recipient_phone">Recipient\'s phone:</string>
+    <string name="transfer">Transfer</string>
+    <string name="transfer_amount">Transfer amount:</string>
+    <string name="transfer_money">Transfer money</string>
+    <string name="confirm">Confirm</string>
 </resources>

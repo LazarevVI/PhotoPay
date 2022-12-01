@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recognizeTextBtn: MaterialButton
     private lateinit var imageIv: ImageView
     private lateinit var recognizedTextEt: EditText
+    private lateinit var transferBtn: MaterialButton
+
 
     private companion object{
         private const val CAMERA_REQUEST_CODE = 100
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         recognizeTextBtn = findViewById(R.id.extractPhoneNumBtn)
         imageIv = findViewById(R.id.imageIv)
         recognizedTextEt = findViewById(R.id.extractedPhoneNum)
+        transferBtn = findViewById(R.id.transferBtn)
 
         cameraPermissions = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         storagePermissions = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -73,6 +76,12 @@ class MainActivity : AppCompatActivity() {
             else{
                 recognizeTextFromImage()
             }
+        }
+
+        transferBtn.setOnClickListener{
+            val intent = Intent(this@MainActivity,SendMessage::class.java)
+            intent.putExtra("PhoneNum", recognizedTextEt.text.toString())
+            startActivity(intent)
         }
 
     }
@@ -102,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showInputImageDialog() {
+    private fun     showInputImageDialog() {
         val popupMenu = PopupMenu(this, inputImageBtn)
 
         popupMenu.menu.add(Menu.NONE, 1, 1, "Camera")
@@ -193,7 +202,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestCameraPermissions(){
+        Log.d("requestPermission", "Camera permissions requested")
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE)
+
     }
 
     override fun onRequestPermissionsResult(
@@ -205,10 +216,12 @@ class MainActivity : AppCompatActivity() {
         when (requestCode){
             CAMERA_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty()){
+
                     val cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
                     val storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
 
                     if (cameraAccepted && storageAccepted) {
+                        Log.d("requestPermission", "Camera permissions granted")
                         pickImageCamera()
                     }
                     else{
